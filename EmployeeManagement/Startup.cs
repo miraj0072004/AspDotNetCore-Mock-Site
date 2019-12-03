@@ -43,6 +43,10 @@ namespace EmployeeManagement
                 
                 app.UseDeveloperExceptionPage(developerExceptionPageOptions);
             }
+            else
+            {
+                app.UseStatusCodePagesWithRedirects("/Error/{0}");
+            }
 
             //FileServerOptions fileServerOptions = new FileServerOptions();
             //fileServerOptions.DefaultFilesOptions.DefaultFileNames.Clear();
@@ -56,12 +60,12 @@ namespace EmployeeManagement
                 routes.MapRoute("default","{controller=Home}/{action=Index}/{id?}");
             });
 
-            app.Run(async (context) =>
-            {
-                //throw new Exception("Some exception");
-                await context.Response.WriteAsync("Hello World");
+            //app.Run(async (context) =>
+            //{
+            //    //throw new Exception("Some exception");
+            //    await context.Response.WriteAsync("Hello World");
                 
-            });
+            //});
         }
     }
 }

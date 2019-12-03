@@ -13,7 +13,7 @@
       "launchBrowser": true,
       "environmentVariables": {
         "Sample": "Rototta toing from environment",
-        "ASPNETCORE_ENVIRONMENT": "Development"
+        "ASPNETCORE_ENVIRONMENT": "Staging"
       }
     },
     "EmployeeManagement": {
