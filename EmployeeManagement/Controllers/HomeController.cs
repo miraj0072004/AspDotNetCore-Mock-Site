@@ -41,6 +41,14 @@ namespace EmployeeManagement.Controllers
             //ViewData["Employee"] = employee;
             //ViewData["Title"] = "Welcome to employee details page";
 
+            Employee employee = _employeeRepository.GetEmployee(id.Value);
+
+            if (employee == null)
+            {
+                Response.StatusCode = 404;
+                return View("EmployeeNotFound",id.Value);
+            }
+
             HomeDetailsViewModel homeDetailViewModel = new HomeDetailsViewModel()
             {
                 Employee = _employeeRepository.GetEmployee(id??1),
