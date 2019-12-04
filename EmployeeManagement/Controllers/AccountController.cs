@@ -49,5 +49,17 @@ namespace EmployeeManagement.Controllers
             }
             return View(model);
         }
+
+        public IActionResult Login()
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Logout()
+        {
+            await _signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
