@@ -7,6 +7,7 @@ using EmployeeManagement.Models;
 using EmployeeManagement.ViewModels;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
 namespace EmployeeManagement.Controllers
 {
@@ -14,6 +15,7 @@ namespace EmployeeManagement.Controllers
     {
         private IEmployeeRepository _employeeRepository;
         private readonly IHostingEnvironment _hostingEnvironment;
+        private readonly ILogger _logger;
 
         public object HomeDetailViewModel { get; private set; }
 
@@ -22,10 +24,11 @@ namespace EmployeeManagement.Controllers
         //    return View();
         //}
 
-        public HomeController(IEmployeeRepository employeeRepository,IHostingEnvironment hostingEnvironment)
+        public HomeController(IEmployeeRepository employeeRepository,IHostingEnvironment hostingEnvironment,ILogger<HomeController> logger)
         {
             _employeeRepository = employeeRepository;
             _hostingEnvironment = hostingEnvironment;
+            _logger = logger;
         }
 
         public ViewResult Index()
@@ -41,6 +44,14 @@ namespace EmployeeManagement.Controllers
             //ViewData["Employee"] = employee;
             //ViewData["Title"] = "Welcome to employee details page";
 
+            //throw new Exception("Error in Details view");
+            _logger.LogTrace("Trace Log");
+            _logger.LogDebug("Debug Log");
+            _logger.LogInformation("Information Log");
+            _logger.LogWarning("Warning Log");
+            _logger.LogError("Error Log");
+            _logger.LogCritical("Critical Log");
+
             Employee employee = _employeeRepository.GetEmployee(id.Value);
 
             if (employee == null)
@@ -51,7 +62,7 @@ namespace EmployeeManagement.Controllers
 
             HomeDetailsViewModel homeDetailViewModel = new HomeDetailsViewModel()
             {
-                Employee = _employeeRepository.GetEmployee(id??1),
+                Employee = employee,
                 PageTitle="Details Page"
                 
             };
