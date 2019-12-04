@@ -25,7 +25,7 @@ namespace EmployeeManagement.Controllers
             switch (statusCode)
             {
                 case 404:
-                    //ViewBag.ErrorMessage = "Sorry, the page could not be found!";
+                    ViewBag.ErrorMessage = "Sorry, the resource you requested could not be found!";
                     //ViewBag.Path = statusCodeResult.OriginalPath;
                     //ViewBag.QS = statusCodeResult.OriginalQueryString;
 
