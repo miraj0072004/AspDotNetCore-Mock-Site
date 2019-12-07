@@ -135,6 +135,7 @@ namespace EmployeeManagement.Controllers
             ViewBag.roleId = roleId;
 
             var role = await _roleManager.FindByIdAsync(roleId);
+            ViewBag.roleName = role.Name;
 
             if (role==null)
             {
@@ -210,6 +211,13 @@ namespace EmployeeManagement.Controllers
                
             }
             return RedirectToAction("EditRole", new { Id = roleId });
+        }
+
+
+        public IActionResult ListUsers()
+        {
+            var users = _userManager.Users;
+            return View(users);
         }
     }
 }
