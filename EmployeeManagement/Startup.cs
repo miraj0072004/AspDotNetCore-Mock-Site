@@ -50,12 +50,12 @@ namespace EmployeeManagement
                     policy=>policy.RequireClaim("Delete Role").RequireClaim("Create Role"));
 
                 options.AddPolicy("EditRolePolicy",
-                    policy => policy.RequireClaim("Edit Role"));
+                    policy => policy.RequireClaim("Edit Role","true"));
             });
 
             services.ConfigureApplicationCookie(options =>
                 {
-                    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
+                    options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
                 }
             );
 
