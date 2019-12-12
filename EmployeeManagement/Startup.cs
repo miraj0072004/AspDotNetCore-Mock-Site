@@ -44,6 +44,12 @@ namespace EmployeeManagement
             //    options.Password.RequireNonAlphanumeric = false;
             //});
 
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("DeleteRolePolicy",
+                    policy=>policy.RequireClaim("Delete Role").RequireClaim("Create Role"));
+            });
+
             services.AddMvc(config =>
                 {
                     var policy = new AuthorizationPolicyBuilder()
