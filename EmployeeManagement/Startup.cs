@@ -53,6 +53,12 @@ namespace EmployeeManagement
                     policy => policy.RequireClaim("Edit Role"));
             });
 
+            services.ConfigureApplicationCookie(options =>
+                {
+                    options.AccessDeniedPath = new PathString("/Admin/AccessDenied");
+                }
+            );
+
             services.AddMvc(config =>
                 {
                     var policy = new AuthorizationPolicyBuilder()
