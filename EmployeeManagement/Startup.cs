@@ -70,6 +70,7 @@ namespace EmployeeManagement
 
             services.AddSingleton<IAuthorizationHandler,
                 CanEditOnlyOtherAdminRolesAndClaimsHandler>();
+            services.AddSingleton<IAuthorizationHandler, SuperAdminHandler>();
             services.ConfigureApplicationCookie(options =>
                 {
                     options.AccessDeniedPath = new PathString("/Administration/AccessDenied");
