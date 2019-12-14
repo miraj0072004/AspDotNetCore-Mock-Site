@@ -44,6 +44,11 @@ namespace EmployeeManagement
             //    options.Password.RequiredUniqueChars = 2;
             //    options.Password.RequireNonAlphanumeric = false;
             //});
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = "92991678884-69705q3r4s4cc6uguhqa5ek221k8do8h.apps.googleusercontent.com";
+                options.ClientSecret = "KxpnNEeAtvSBnrr3KyeWntxf";
+            });
 
             services.AddAuthorization(options =>
             {
